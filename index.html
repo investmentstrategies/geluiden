@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geluidenspel</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f8ff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #17324d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #4a5a6a;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 180px);
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .square {
+      width: 180px;
+      height: 180px;
+      background: #ffffff;
+      border: 4px solid #17324d;
+      border-radius: 20px;
+      font-size: 60px;
+      font-weight: bold;
+      color: #17324d;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.15s, background 0.15s;
+      user-select: none;
+    }
+
+    .square:hover {
+      background: #dff1ff;
+      transform: scale(1.04);
+    }
+
+    .square:active {
+      transform: scale(0.96);
+      background: #bde3ff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Raad het geluid</h1>
+    <p>Klik op een vakje en luister goed.</p>
+
+    <div class="grid">
+      <div class="square" onclick="playSound('sounds/chimpansee.wav')">1</div>
+      <div class="square" onclick="playSound('sounds/elephant.wav')">2</div>
+      <div class="square" onclick="playSound('sounds/frog.mp3')">3</div>
+      <div class="square" onclick="playSound('sounds/wolf.wav')">4</div>
+    </div>
+  </div>
+
+  <script>
+    let currentAudio = null;
+
+    function playSound(file) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+
+      currentAudio = new Audio(file);
+      currentAudio.play();
+    }
+  </script>
+
+</body>
+</html>
